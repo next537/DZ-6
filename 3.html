@@ -37,6 +37,16 @@
   1. При наведении на любую из звезд, данной звезде должен ставиться класс
   golden, также такой класс должен ставиться всем звездам до нее слева.
   */
+document.querySelector('.stars_container').addEventListener('mouseover', event => {
+if (!event.target.classList.contains('fas')) {
+return;
+}
+let stars = event.target; 
+do {
+stars.classList.add('golden');
+stars = stars.previousElementSibling;
+} while (stars);
+});
 
 
   /*
@@ -44,6 +54,16 @@
   задания должны быть удалены.
    */
 
+document.querySelector('.stars_container').addEventListener('mouseout', event => {
+if (!event.target.classList.contains('fas')) {
+return;
+}
+let stars = event.target;
+do {
+stars.classList.remove('golden');
+stars = stars.previousElementSibling;
+} while (stars);
+});
 
   /*
   3. Когда мы переводим мышь от одной звезды к другой, у нас могут мигать
@@ -51,6 +71,8 @@
   Можем ли мы это исправить? Если да, то предложите решение.
   */
 
+  //Мигать звезды могут при одновременном выполнении добавления/удаления класса (если не убрали курсор со звезды)
+  //По идее решить наверное можно это либо задав некоторое время для удаления класса 
 
 </script>
 </body>
